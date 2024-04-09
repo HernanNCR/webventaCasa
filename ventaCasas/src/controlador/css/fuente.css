@@ -1,0 +1,7 @@
+@font-face {
+    font-family: ventaCasa;
+    src: url(fuente/Altone\ Trial-Regular.ttf);
+}
+body{
+    font-family: ventaCasa;
+}
