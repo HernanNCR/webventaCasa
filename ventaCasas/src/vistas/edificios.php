@@ -1,3 +1,11 @@
+<?php 
+    include("../modelo/conexion.php");
+
+    $sql = "SELECT * FROM table_servicios WHERE tipo_servicios = 'Edificio'";
+    $stmt= $conn->query($sql);
+    $registros = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +16,29 @@
     <link rel="stylesheet" href="../controlador/css/styleservicios.css">
     <link rel="stylesheet" href="../controlador/css/font.css">
     <link rel="shortcut icon" href="../controlador/img/casa.ico" type="image/x-icon">
+    <style>
+        .informacion_carta{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .titulo_local{
+            font-size: 25px;
+        }
+        .informacion{
+            margin: 10px 20px 10px 20px;
+        }
+        .carta{
+            border-radius: 15px;
+        }
+        .carta_img{
+            border-radius: 15px;
+        }
+        .carta:hover{
+            background-color: lightgray;
+            transition: .5s;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -16,7 +47,7 @@
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="bienvenidos.html">Bienvenidos</a></li>
+            <li><a href="bienvenidos.html">Bienvenidos</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="locales.php">Locales</a></li>
                 <li><a href="pisos.php">Pisos</a></li>
@@ -31,53 +62,37 @@
     </header>
     <div class="titulo_pagina">
         <center>
-            <p>Nuestros Servicios</p>
-            <br>
-            <b>Ofrecemos</b>
+            <b>Edificios</b>
         </center>
         
     </div>
     <div class="cuerpo">
+        <?php foreach( $registros  as $filas) :?>
         <div class="cartas">
             <div class="carta">
-                <img class="carta_img" src="../controlador/img/ofi1.png" width="350px"><br><br>
-                <center><p>Locales</p><br></center>
-                <ul>
-                    <li>Comercial</li>
-                    <li>Oficinas</li>
-                    <li>Consultorios</li>
-                </ul>
+                <img class="carta_img" src="../controlador/img/img_locales/<?php echo $filas->img_servicio;?>" width="350px" height="200px">
                 <br><br>
-                <center><a class="detalles" href="locales.php">Ver Detalles ></a></center>
+                <div class="informacion">
+                    <div class="informacion_carta">
+                        <img src="../controlador/img/user.svg" width="15px">
+                        <p><?php echo $filas->nombre_rentor; ?></p>
+                        <img src="../controlador/img/calendar.svg" width="15px">
+                        <p><?php echo $filas->fecha_ingreso; ?></p>
+                    </div>
+                    <br>
+                    <p><?php echo $filas->nombre_servicio; ?></p>
+                    <br>
+                    <p class="titulo_local"><?php echo $filas->precio_servicio.' MXN'; ?></p>
+                    <br><br>
+                    <center><a class="detalles" href="descripcion_inmueble.php?id=<?php echo $filas->id_servicios; ?>">Ver Detalles ></a></center>
+                </div>
+                
             </div>
         </div>
-        <div class="cartas">
-            <div class="carta">
-                <img class="carta_img" src="../controlador/img/ofi2.jpg" width="350px"><br><br>
-                <center><p>Pisos</p><br></center>
-                <ul>
-                    <li>Apartamentos</li>
-                    <li>Locales de plaza</li>
-                    <li>Despachos</li>
-                    <li>Consultorios</li>
-                </ul>
-                <br><br>
-                <center><a class="detalles" href="pisos.php">Ver Detalles ></a></center>
-            </div>
-        </div>
-        <div class="cartas">
-            <div class="carta">
-                <img class="carta_img" src="../controlador/img/ofi3.jpg" width="350px"><br><br>
-                <center><p>Edificios</p><br></center>
-                <ul>
-                    <li>Comercial</li>
-                    <li>Oficinas</li>
-                    <li>Consultorios</li>
-                </ul>
-                <br><br>
-                <center><a class="detalles" href="edificios.php">Ver Detalles ></a></center>
-            </div>
-        </div>
+        <?php endforeach; ?>
+        
+
+        
     </div>
     <footer>
         <p class="titulo">HOOMME</p>

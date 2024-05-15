@@ -1,0 +1,7 @@
+@font-face {
+    font-family: ventaCasa;
+    src: url(fuente/coolvetica\ rg.otf);
+}
+body{
+    font-family: ventaCasa;
+}

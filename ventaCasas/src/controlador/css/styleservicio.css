@@ -1,0 +1,75 @@
+.titulo_pagina{
+    margin: 50px 0px 50px 0px;
+}
+.cuerpo{
+    width: 100%;
+    height: auto;
+    margin: 50px 0px 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.carta{
+    height: 400px;
+    margin: 5px;
+}
+.carta:hover{
+    transform: scale(1.1);
+    transition: .5s;
+}
+.carta ul{
+    margin-left: 40px;
+}
+.detalles{
+    color: blue;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+footer{
+    background-color: rgb(0, 8, 21);
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+footer .titulo{
+    color: white;
+    font-size: 30px; 
+    margin-top: 0px;
+}
+.Contactanos{
+    color: white;
+    margin: 10px 10px 10px 0px;
+}
+.correo{
+    background-color: rgb(25, 33, 44);
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.correo .correo_usuario{
+    background-color: rgb(25, 33, 44);
+    color: gray;
+    border: 1px solid rgb(25, 33, 44);
+    margin: 0px 0px 0px 20px;
+    height: 40px;
+}
+.correo .enviar{
+    background-color: rgb(0, 59, 162);
+    border: 1px solid rgb(0, 59, 162);
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 0px 10px 0px 0px;
+    cursor: pointer;
+    color: white;
+}

@@ -1,0 +1,74 @@
+.cuerpo{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cuerpo .inicio_sesion{
+    width: 500px;
+    height: 400px;
+    margin: 50px;
+}
+.info{
+    font-size: 25px;
+    text-align: center;
+}
+.info input{
+    width: 70%;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+}
+.inicio{
+    background-color: rgb(0, 68, 191);
+    color:white;
+    width: 30%;
+    height: 30px;
+    border-radius: 20px;
+    cursor:pointer;
+    margin-left:170px;    
+}
+
+
+footer{
+    background-color: rgb(0, 8, 21);
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+footer .titulo{
+    color: white;
+    font-size: 30px; 
+}
+.Contactanos{
+    color: white;
+    margin: 10px 10px 10px 0px;
+}
+.correo{
+    background-color: rgb(25, 33, 44);
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.correo .correo_usuario{
+    background-color: rgb(25, 33, 44);
+    color: gray;
+    border: 1px solid rgb(25, 33, 44);
+    margin: 0px 0px 0px 20px;
+    height: 40px;
+}
+.correo .enviar{
+    background-color: rgb(0, 59, 162);
+    border: 1px solid rgb(0, 59, 162);
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 0px 10px 0px 0px;
+    cursor: pointer;
+    color: white;
+}

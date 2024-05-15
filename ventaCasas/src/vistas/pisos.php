@@ -1,3 +1,11 @@
+<?php 
+    include("../modelo/conexion.php");
+
+    $sql = "SELECT * FROM table_servicios WHERE tipo_servicios = 'Piso'";
+    $stmt= $conn->query($sql);
+    $registros = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,18 +13,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOOMME</title>
     <link rel="stylesheet" href="../controlador/css/style.css">
-    <link rel="stylesheet" href="../controlador/css/style_cuerpo.css">
+    <link rel="stylesheet" href="../controlador/css/styleservicios.css">
     <link rel="stylesheet" href="../controlador/css/font.css">
     <link rel="shortcut icon" href="../controlador/img/casa.ico" type="image/x-icon">
     <style>
-        .titulo_pagina{
-            margin: 50px 0px 5px 0px;
+        .informacion_carta{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .titulo_local{
+            font-size: 25px;
         }
         .informacion{
-            margin-left: 30px;
+            margin: 10px 20px 10px 20px;
         }
-        .vision_mision p{
-            font-size: 14px;
+        .carta{
+            border-radius: 15px;
+        }
+        .carta_img{
+            border-radius: 15px;
+        }
+        .carta:hover{
+            background-color: lightgray;
+            transition: .5s;
         }
     </style>
 </head>
@@ -42,29 +62,36 @@
     </header>
     <div class="titulo_pagina">
         <center>
-            <p>Hablemos sobre Nosotros</p>
-            <b>¿Porque somos los mejores?</b>
+            <b>Pisos</b>
         </center>
         
     </div>
     <div class="cuerpo">
-        <div class="informacion_imagen"><img src="../controlador/img/nosotros.png" width="500px"></div>
-        <div class="informacion">
-            
-            <p>HOOME es una plataforma digital diseñada para simplificar y mejorar el proceso de busqueda, compras y alquiler de propiedades inmobiliarias. Con una interfaz intuitiva y amigable, los usuarios pueden explorar una amplia variedad de opciones de locales, pisos o edificios</p>
-            <br>
-            <div class="vision_mision">
-                <img src="../controlador/img/vision.svg" width="30px">
-                <h3>Nuestra Vision</h3>
-                <p>Convertimos en la plataforma lider a nivel nacional para la compra, venta y alquiler de propiedades, ofreciendo soluciones innovadoras y personalizadas que superen las expectativas de nuestros usuarios y socios comerciales</p>
-            </div>
-            <br>
-            <div class="vision_mision">
-                <img src="../controlador/img/mision.svg" width="30px">
-                <h3>Nuestra Mision</h3>
-                <p>Facilitar y transformar la experiencia de encontrar, comprar o alquilar un hogar, conectando de manera efectiva a compradores y vendedores a traves de una plataforma digital intuitiva y confiable</p>
+    <?php foreach( $registros  as $filas) :?>
+        <div class="cartas">
+            <div class="carta">
+                <img class="carta_img" src="../controlador/img/img_locales/<?php echo $filas->img_servicio;?>" width="350px" height="200px">
+                <br><br>
+                <div class="informacion">
+                    <div class="informacion_carta">
+                        <img src="../controlador/img/user.svg" width="15px">
+                        <p><?php echo $filas->nombre_rentor; ?></p>
+                        <img src="../controlador/img/calendar.svg" width="15px">
+                        <p><?php echo $filas->fecha_ingreso; ?></p>
+                    </div>
+                    <br>
+                    <p><?php echo $filas->nombre_servicio; ?></p>
+                    <br>
+                    <p class="titulo_local"><?php echo $filas->precio_servicio.' MXN'; ?></p>
+                    <br><br>
+                    <center><a class="detalles" href="descripcion_inmueble.php?id=<?php echo $filas->id_servicios; ?>">Ver Detalles ></a></center>
+                </div>
+                
             </div>
         </div>
+        <?php endforeach; ?>
+        
+
         
     </div>
     <footer>
